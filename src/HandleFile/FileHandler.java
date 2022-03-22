@@ -1,9 +1,6 @@
 package HandleFile;
-import Dictionary.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class FileHandler {
     public static HashMap<String,String> importDataFromFile(String path){
@@ -32,12 +29,42 @@ public class FileHandler {
         }
         return slangs;
     }
-    public static void exportDatatoFile(String path,ArrayList<String> slangs){
+    public static boolean exportDataToFile(String path,HashMap<String,String> slangs) throws Exception{
+        BufferedWriter bw=null;
         try{
-            BufferedWriter bw=new BufferedWriter(new FileWriter(path,true));
-
-        }catch (IOException ioe){
-            ioe.printStackTrace();
+            bw=new BufferedWriter(new FileWriter(path));
+            Set<String> keys=slangs.keySet();
+            Iterator<String> i=keys.iterator();
+            bw.write("Slag`Meaning");
+            bw.write("\r\n");
+            while(i.hasNext()){
+                String keyCur=i.next();
+                bw.write(keyCur+"`"+slangs.get(keyCur));
+                bw.write("\r\n");
+            }
+            bw.flush();
+            bw.close();
+        }catch (Exception e){
+            System.out.println("Ghi du lieu khong thanh cong.");
+            return false;
         }
+        finally {
+            if(bw!=null)
+                bw.close();
+        }
+        return true;
+    }
+    public static ArrayList<String> importDataFromFileToAL(String path){
+        ArrayList<String> lines=new ArrayList<>(0);
+        try{
+            BufferedReader br=new BufferedReader(new FileReader(path));
+            String line=new String("");
+            while((line=br.readLine())!=null){
+                lines.add(line);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return lines;
     }
 }

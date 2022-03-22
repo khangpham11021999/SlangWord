@@ -4832,7 +4832,7 @@ ODL`Oh Dear Lord
 ODST`Orbital Drop Shock Trooper
 ODT`On Dis Ting
 OE`Outlook Express| Operator Error
-OED`Oxford English Dictionary
+OED`Oxford English DictionaryFeatures
 OEM`Original Equipment Manufacurer
 OFAY`Offensive term for a white person
 OFC`Of Course
