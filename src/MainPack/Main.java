@@ -69,8 +69,8 @@ public class Main {
                     DictionaryFeature.TimTheoSlangWord(slangs);
                     isContinue=Menu.isContinue();
                     break;
-                case 2:
-                    System.out.println("case 2");
+                case 2://Tim kiem theo definition, hien thi tat ca cac slang word ma trong definition co
+                    DictionaryFeature.TimTheoDefinitions(slangs);
                     isContinue=Menu.isContinue();
                     break;
                 case 7://backup: confirm? and only root data is keeping
