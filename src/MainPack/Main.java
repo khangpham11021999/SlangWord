@@ -1,11 +1,14 @@
 package MainPack;
 
+import DictionaryFeatures.DictionaryFeature;
 import HandleFile.FileHandler;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 class Menu{
     public static int PrintMenu(){
@@ -56,40 +59,28 @@ public class Main {
         String pathTemp=".\\src\\Data\\temp.txt";
         try {
             HashMap<String, String> slangs = FileHandler.importDataFromFile(pathForReadingAndWriting);
-            ArrayList<String> linesTmp=FileHandler.importDataFromFileToAL(backupPath);
-
-            ArrayList<String> definitions=new ArrayList<>(0);
-            for(String e:linesTmp){
-                String[]obj=e.split("`");
-                definitions.add(obj[1]);
-            }
-            for(String e:definitions){
-                if(!slangs.containsValue(e))
-                    System.out.println(e);
-            }
-
-//        System.out.println("Nums of data: "+slangs.size());
+//            System.out.println("Nums of data: "+slangs.size());
             boolean isContinue = true;
-//        while(isContinue){
-//            isContinue=false;
-//            int choice=Menu.PrintMenu();
-//            switch (choice){
-//                case 1:
-//                    System.out.println("case 1");
-//                    isContinue=Menu.isContinue();
-//                    break;
-//                case 2:
-//                    System.out.println("case 2");
-//                    isContinue=Menu.isContinue();
-//                    break;
-//                case 7://backup: confirm? and only root data is keeping
-//                    isContinue=Menu.isContinue();
-//                    break;
-//                default:
-//                    System.out.println("Case default");
-//                    break;
-//            }
-//        }
+        while(isContinue){
+            isContinue=false;
+            int choice=Menu.PrintMenu();
+            switch (choice){
+                case 1:
+                    DictionaryFeature.TimTheoSlangWord(slangs);
+                    isContinue=Menu.isContinue();
+                    break;
+                case 2:
+                    System.out.println("case 2");
+                    isContinue=Menu.isContinue();
+                    break;
+                case 7://backup: confirm? and only root data is keeping
+                    isContinue=Menu.isContinue();
+                    break;
+                default:
+                    System.out.println("Case default");
+                    break;
+            }
+        }
 
 //            boolean checkWriting = FileHandler.exportDataToFile(pathTemp, slangs);
             System.out.println("Chuong trinh ket thuc. Xin cam on\n");

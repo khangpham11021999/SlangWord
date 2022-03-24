@@ -59,6 +59,7 @@ public class FileHandler {
         try{
             BufferedReader br=new BufferedReader(new FileReader(path));
             String line=new String("");
+            br.readLine();
             while((line=br.readLine())!=null){
                 lines.add(line);
             }
