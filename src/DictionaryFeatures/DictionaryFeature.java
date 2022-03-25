@@ -86,4 +86,25 @@ public class DictionaryFeature {
         }
         return slangs;
     }
+    public static HashMap<String,String> ChinhSuaSlangWord(String path,HashMap<String,String> slangs){
+        try{
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("Nhap slang word muon chinh sua: ");
+            String slang=br.readLine();
+
+            if(slangs.get(slang)!=null)
+            {
+                System.out.print("Nhap definition ban muon chinh sua: ");
+                String definition=new String("");
+                definition=br.readLine();
+                slangs.put(slang,definition);
+                FileHandler.exportDataToFile(path,slangs);
+                return slangs;
+            }
+            System.out.println("Khong tim thay slangword muon chinh sua.\n");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return slangs;
+    }
 }

@@ -82,6 +82,10 @@ public class Main {
                         slangs=DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
+                    case 5://Them slang word
+                        DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting,slangs);
+                        isContinue = Menu.isContinue();
+                        break;
                     case 7://backup: confirm? and only root data is keeping
                         isContinue = Menu.isContinue();
                         break;
