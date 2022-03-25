@@ -15,7 +15,7 @@ public class DictionaryFeature {
             FileHandler.appendLogToFile(slangWord,pathLog);
             String definition=slangs.get(slangWord);
             if(definition!=null)
-                System.out.println("Y nghia cua "+slangWord+"la: "+definition );
+                System.out.println("Y nghia cua "+slangWord+" la: "+definition );
             else
                 System.out.println("Khong tim duoc y nghia thich hop cua "+slangWord);
 
@@ -68,5 +68,22 @@ public class DictionaryFeature {
         }catch (Exception e){
             System.out.println(e.toString());
         }
+    }
+    public static HashMap<String,String> ThemSlangWord(String path,HashMap<String,String> slangs){
+        try{
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Nhap slang: ");
+            String slang=br.readLine();
+            System.out.println("Nhap definition cho slang: ");
+            String definition=br.readLine();
+            slangs.put(slang,definition);
+            FileHandler.exportDataToFile(path,slangs);
+            slangs=FileHandler.importDataFromFile(path);
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return slangs;
     }
 }
