@@ -1,15 +1,18 @@
 package DictionaryFeatures;
+import HandleFile.FileHandler;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
 public class DictionaryFeature {
-    public static void TimTheoSlangWord(HashMap<String,String> slangs){
+    public static void TimTheoSlangWord(HashMap<String,String> slangs,String pathLog){
         try {
             System.out.println("Nhap tu slang-word ma ban muon tim?");
             BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
             String slangWord=br.readLine();
+            FileHandler.appendLogToFile(slangWord,pathLog);
             String definition=slangs.get(slangWord);
             if(definition!=null)
                 System.out.println("Y nghia cua "+slangWord+"la: "+definition );
@@ -46,7 +49,24 @@ public class DictionaryFeature {
            }
 
         }catch (IOException ioe){
-            ioe.printStackTrace();
+            System.out.println(ioe.toString());
+        }
+    }
+    public static void HienThiSlangsWordDaTim(String path){
+        try{
+            ArrayList<String> slangsFound=FileHandler.importLogFormFile(path);
+            if(!slangsFound.isEmpty())
+            {
+                int i=1;
+                System.out.println("Danh sach cac slang word da tim kiem: ");
+                for(String slang: slangsFound){
+                    System.out.println((i++)+"/ "+slang);
+                }
+            }
+            else
+                System.out.println("Chua co slang word nao duoc ghi lai.\n");
+        }catch (Exception e){
+            System.out.println(e.toString());
         }
     }
 }

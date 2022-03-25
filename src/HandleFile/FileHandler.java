@@ -1,5 +1,6 @@
 package HandleFile;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class FileHandler {
@@ -54,18 +55,33 @@ public class FileHandler {
         }
         return true;
     }
-    public static ArrayList<String> importDataFromFileToAL(String path){
-        ArrayList<String> lines=new ArrayList<>(0);
+    public static ArrayList<String> importLogFormFile(String path){
+        ArrayList<String> slangsFound=new ArrayList<String>(0);
         try{
             BufferedReader br=new BufferedReader(new FileReader(path));
             String line=new String("");
-            br.readLine();
-            while((line=br.readLine())!=null){
-                lines.add(line);
+            while((line=br.readLine())!=null)
+            {
+                slangsFound.add(line);
             }
-        }catch (Exception e){
-            e.printStackTrace();
+            br.close();
         }
-        return lines;
+        catch (IOException e){
+            System.out.println(e.toString());
+        }
+        return slangsFound;
+    }
+    public static boolean appendLogToFile(String slang,String path){
+        try{
+            BufferedWriter bw=new BufferedWriter(new FileWriter(path,true));
+            bw.write(slang);
+            bw.write("\r\n");
+            bw.flush();
+            bw.close();
+        }catch (IOException e){
+            System.out.println("Khong co log duoc ghi lai");
+            return false;
+        }
+        return true;
     }
 }
