@@ -79,18 +79,20 @@ public class Main {
                         isContinue = Menu.isContinue();
                         break;
                     case 4://Them slang word
-                        DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
+                        slangs=DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 5://Chinh sua slang word
-                        DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting,slangs);
+                        slangs=DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 6://Xoa slang word
-                        DictionaryFeature.XoaSlangWord(pathForReadingAndWriting,slangs);
+                        slangs=DictionaryFeature.XoaSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 7://backup: confirm? and only root data is keeping
+                        slangs=DictionaryFeature.KhoiPhucDanhSachGoc(backupPath,slangs,pathForReadingAndWriting);
+//                        System.out.println("Size external: "+slangs.size());
                         isContinue = Menu.isContinue();
                         break;
                     default:
