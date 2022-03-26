@@ -79,11 +79,15 @@ public class Main {
                         isContinue = Menu.isContinue();
                         break;
                     case 4://Them slang word
-                        slangs=DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
+                        DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
-                    case 5://Them slang word
+                    case 5://Chinh sua slang word
                         DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting,slangs);
+                        isContinue = Menu.isContinue();
+                        break;
+                    case 6://Xoa slang word
+                        DictionaryFeature.XoaSlangWord(pathForReadingAndWriting,slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 7://backup: confirm? and only root data is keeping

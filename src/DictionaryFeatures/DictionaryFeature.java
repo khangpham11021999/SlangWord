@@ -107,4 +107,31 @@ public class DictionaryFeature {
         }
         return slangs;
     }
+    public static HashMap<String,String> XoaSlangWord(String path,HashMap<String,String> slangs){
+        try{
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("Nhap slang word muon xoa: ");
+            String slang=br.readLine();
+            if(slangs.containsKey(slang))
+            {
+                System.out.print("Ban chac chan muon xoa tu nay? An 1 de tiep tuc xoa va bat ki nut nao de stop thao tac nay.");
+                String _character=br.readLine();
+                if("1".equals(_character))
+                {
+                    slangs.remove(slang);
+                    FileHandler.exportDataToFile(path,slangs);
+                    System.out.println("Xoa slang word thanh cong");
+                }
+                else
+                    System.out.println("Thao tac xoa da dung lai.\n");
+                return slangs;
+            }
+            else
+                System.out.println("Khong tim thay slang word muon xoa");
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return slangs;
+    }
+
 }

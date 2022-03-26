@@ -6083,7 +6083,6 @@ OIK`Unpleasant| unpopular person
 BOED`Book of Exalted Deeds (MMORPG)
 UKWIM`You Know What I Mean
 IMSMR`If Memory Serves Me Right
-pvhk`pham vo hKhang
 OIY`Hey
 SHIOK`happiness| pleasure
 CRIT`Critical hit (gaming)
