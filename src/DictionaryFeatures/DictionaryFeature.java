@@ -214,18 +214,91 @@ public class DictionaryFeature {
             }
             System.out.println("Y nghia cua slangword:  " + randomKey + " la gi?");
             System.out.println("Chon 1 trong nhung dap an sau: ");
-            for(int i=0;i<results.length;i++)
-            {
-                System.out.println(i+"/ "+results[i]);
+            for (int i = 0; i < results.length; i++) {
+                System.out.println(i + "/ " + results[i]);
             }
             System.out.print("Dap an cua ban la: ");
-            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-            String str=br.readLine();
-            String indexTrue=Integer.toString(rdNumberOfTrueVal);
-            if(indexTrue.equals(str))
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String str = br.readLine();
+            String indexTrue = Integer.toString(rdNumberOfTrueVal);
+            if (indexTrue.equals(str))
                 System.out.println("Chuc mung ban da dung");
-            else{
-                System.out.println("Chuc ban may man lan sau. Dap an dung la: "+results[rdNumberOfTrueVal]);
+            else {
+                System.out.println("Chuc ban may man lan sau. Dap an dung la: " + results[rdNumberOfTrueVal]);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean DoVuiRandomDefinition(HashMap<String, String> slangs) {
+        try {
+            Random rd = new Random();
+            Object[] keys = slangs.keySet().toArray();
+            Object[] values = slangs.values().toArray();
+            int randomIndexTrue = rd.nextInt(keys.length);
+            //
+            String key1 = (String) keys[rd.nextInt(keys.length)];
+            String key2 = (String) keys[rd.nextInt(keys.length)];
+            String key3 = (String) keys[rd.nextInt(keys.length)];
+            //
+            String randomKey = (String) keys[randomIndexTrue];
+            String trueDefinition = slangs.get(randomKey);
+            List<Integer> indexs = new ArrayList<>(0);
+            indexs.add(0);
+            indexs.add(1);
+            indexs.add(2);
+            indexs.add(3);
+            String[] results = new String[4];
+            int rdNumberOfTrueVal = rd.nextInt(4);
+            results[rdNumberOfTrueVal] = randomKey;
+            //
+            int rdNumberOfKey1 = -1;
+            while (true) {
+                rdNumberOfKey1 = rd.nextInt(4);
+                if (rdNumberOfKey1 == rdNumberOfTrueVal) continue;
+                else {
+                    results[rdNumberOfKey1] = key1;
+                    break;
+                }
+            }
+            //
+            int rdNumberOfKey2 = -1;
+            while (true) {
+                rdNumberOfKey2 = rd.nextInt(4);
+                if (rdNumberOfKey2 == rdNumberOfTrueVal || rdNumberOfKey2 == rdNumberOfKey1) continue;
+                else {
+                    results[rdNumberOfKey2] = key2;
+                    break;
+                }
+            }
+            //
+            int rdNumberOfKey3 = -1;
+            while (true) {
+                rdNumberOfKey3 = rd.nextInt(4);
+                if (rdNumberOfKey3 == rdNumberOfTrueVal || rdNumberOfKey3 == rdNumberOfKey1 || rdNumberOfKey3 == rdNumberOfKey2)
+                    continue;
+                else {
+                    results[rdNumberOfKey3] = key3;
+                    break;
+                }
+            }
+            System.out.println("slang-word cua definition:  " + "`" + trueDefinition + "`" + " la gi?");
+            System.out.println("Chon 1 trong nhung dap an sau: ");
+            for (int i = 0; i < results.length; i++) {
+                System.out.println(i + "/ " + results[i]);
+            }
+            System.out.print("Dap an cua ban la: ");
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String str = br.readLine();
+            String indexTrue = Integer.toString(rdNumberOfTrueVal);
+            if (indexTrue.equals(str))
+                System.out.println("Chuc mung ban da dung");
+            else {
+                System.out.println("Chuc ban may man lan sau. Dap an dung la: " + results[rdNumberOfTrueVal]);
             }
 
         } catch (Exception e) {

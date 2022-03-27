@@ -45,8 +45,7 @@ class Menu {
             String str = "Ban co muon tiep tuc chuong trinh? An 1 de tiep tuc hoac bat ki nut nao de ket thuc.";
             System.out.println(str);
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            if ("1".equals(br.readLine()))
-                return true;
+            if ("1".equals(br.readLine())) return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -103,6 +102,10 @@ public class Main {
                         break;
                     case 9://do vui: hien thi 1 random slang word va bon dap an
                         DictionaryFeature.DoVuiRandomSlangWord(slangs);
+                        isContinue = Menu.isContinue();
+                        break;
+                    case 10://do vui: hien thi 1 random slang word va bon dap an
+                        DictionaryFeature.DoVuiRandomDefinition(slangs);
                         isContinue = Menu.isContinue();
                         break;
 
