@@ -39,6 +39,7 @@ class Menu {
         }
         return choice;
     }
+
     public static boolean isContinue() {
         try {
             String str = "Ban co muon tiep tuc chuong trinh? An 1 de tiep tuc hoac bat ki nut nao de ket thuc.";
@@ -52,6 +53,7 @@ class Menu {
         return false;
     }
 }
+
 //
 public class Main {
     public static void main(String[] args) {
@@ -79,19 +81,19 @@ public class Main {
                         isContinue = Menu.isContinue();
                         break;
                     case 4://Them slang word
-                        slangs=DictionaryFeature.ThemSlangWord(pathForReadingAndWriting,slangs);
+                        slangs = DictionaryFeature.ThemSlangWord(pathForReadingAndWriting, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 5://Chinh sua slang word
-                        slangs=DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting,slangs);
+                        slangs = DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 6://Xoa slang word
-                        slangs=DictionaryFeature.XoaSlangWord(pathForReadingAndWriting,slangs);
+                        slangs = DictionaryFeature.XoaSlangWord(pathForReadingAndWriting, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 7://backup: confirm? and only root data is keeping
-                        slangs=DictionaryFeature.KhoiPhucDanhSachGoc(backupPath,slangs,pathForReadingAndWriting);
+                        slangs = DictionaryFeature.KhoiPhucDanhSachGoc(backupPath, slangs, pathForReadingAndWriting);
 //                        System.out.println("Size external: "+slangs.size());
                         isContinue = Menu.isContinue();
                         break;
@@ -99,6 +101,11 @@ public class Main {
                         DictionaryFeature.RandomSlangWord(slangs);
                         isContinue = Menu.isContinue();
                         break;
+                    case 9://do vui: hien thi 1 random slang word va bon dap an
+                        DictionaryFeature.DoVuiRandomSlangWord(slangs);
+                        isContinue = Menu.isContinue();
+                        break;
+
                     default:
                         System.out.println("Case default");
                         break;
