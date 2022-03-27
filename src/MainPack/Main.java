@@ -95,6 +95,10 @@ public class Main {
 //                        System.out.println("Size external: "+slangs.size());
                         isContinue = Menu.isContinue();
                         break;
+                    case 8://random a slang word
+                        DictionaryFeature.RandomSlangWord(slangs);
+                        isContinue = Menu.isContinue();
+                        break;
                     default:
                         System.out.println("Case default");
                         break;

@@ -3,9 +3,7 @@ package DictionaryFeatures;
 import HandleFile.FileHandler;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class DictionaryFeature {
     public static void TimTheoSlangWord(HashMap<String, String> slangs, String pathLog) {
@@ -155,4 +153,20 @@ public class DictionaryFeature {
         return slangs;
     }
 
+    public  static boolean RandomSlangWord(HashMap<String,String> slangs){
+        try{
+            Random rd=new Random();
+            Object[] keys=slangs.keySet().toArray();
+            String randomKey=(String) keys[rd.nextInt(keys.length)];
+            System.out.println("Random slang word: "+randomKey+"`"+slangs.get(randomKey));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("Khong co slangword nao duoc random ra.");
+            return false;
+        }
+        return true;
+
+    }
 }
