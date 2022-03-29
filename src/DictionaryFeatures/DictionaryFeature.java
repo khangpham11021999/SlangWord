@@ -120,17 +120,21 @@ public class DictionaryFeature {
         return slangs;
     }
 
-    public static HashMap<String, String> KhoiPhucDanhSachGoc(String rootPathSlangs, HashMap<String, String> slangs, String pathForWriting) {
+    public static HashMap<String, String> KhoiPhucDanhSachGoc(String rootPathSlangs, HashMap<String, String> slangs,String latestSlangsPath) {
         try {
             System.out.println("Ban co chac chan muon khoi phuc danh sach goc? ");
             System.out.println("An 1 de tiep tuc hoac bat ki nut nao khac de dung thao tac nay");
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String _character = br.readLine();
             if ("1".equals(_character)) {
-                slangs.clear();
                 slangs = FileHandler.importDataFromFile(rootPathSlangs,"");
-                FileHandler.exportDataToFile(pathForWriting, slangs);
                 System.out.println("Khoi phuc danh sach goc thanh cong.");
+                try{
+                    File f=new File(latestSlangsPath);
+                    f.delete();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 //                System.out.println("Size internal: "+slangs.size());
                 return slangs;
             } else System.out.println("Thao tac khoi phuc da bi dung lai.");

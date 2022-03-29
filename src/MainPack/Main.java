@@ -92,7 +92,7 @@ public class Main {
                         isContinue = Menu.isContinue();
                         break;
                     case 7://backup: confirm? and only root data is keeping
-                        slangs = DictionaryFeature.KhoiPhucDanhSachGoc(rootPath, slangs, latestSlangsPath);
+                        slangs = DictionaryFeature.KhoiPhucDanhSachGoc(rootPath, slangs,latestSlangsPath);
 //                        System.out.println("Size external: "+slangs.size());
                         isContinue = Menu.isContinue();
                         break;
