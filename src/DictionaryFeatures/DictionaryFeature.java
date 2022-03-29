@@ -50,21 +50,17 @@ public class DictionaryFeature {
     }
 
     public static void HienThiSlangsWordDaTim(String path) {
-        try {
-            ArrayList<String> slangsFound = FileHandler.importLogFormFile(path);
-            if (!slangsFound.isEmpty()) {
-                int i = 1;
-                System.out.println("Danh sach cac slang word da tim kiem: ");
-                for (String slang : slangsFound) {
-                    System.out.println((i++) + "/ " + slang);
-                }
-            } else System.out.println("Chua co slang word nao duoc ghi lai.\n");
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        ArrayList<String> slangsFound = FileHandler.importLogFormFile(path);
+        if (!slangsFound.isEmpty()) {
+            int i = 1;
+            System.out.println("Danh sach cac slang word da tim kiem: ");
+            for (String slang : slangsFound) {
+                System.out.println((i++) + "/ " + slang);
+            }
+        } else System.out.println("Chua co slang word nao duoc ghi lai.\n");
     }
 
-    public static HashMap<String, String> ThemSlangWord(String path, HashMap<String, String> slangs) {
+    public static HashMap<String, String> ThemSlangWord(String latestSlangsPath, HashMap<String, String> slangs) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Nhap slang: ");
@@ -72,8 +68,8 @@ public class DictionaryFeature {
             System.out.println("Nhap definition cho slang: ");
             String definition = br.readLine();
             slangs.put(slang, definition);
-            FileHandler.exportDataToFile(path, slangs);
-            slangs = FileHandler.importDataFromFile(path);
+            FileHandler.exportDataToFile(latestSlangsPath, slangs);
+            slangs = FileHandler.importDataFromFile("",latestSlangsPath);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (Exception e) {
@@ -124,7 +120,7 @@ public class DictionaryFeature {
         return slangs;
     }
 
-    public static HashMap<String, String> KhoiPhucDanhSachGoc(String path, HashMap<String, String> slangs, String pathForWriting) {
+    public static HashMap<String, String> KhoiPhucDanhSachGoc(String rootPathSlangs, HashMap<String, String> slangs, String pathForWriting) {
         try {
             System.out.println("Ban co chac chan muon khoi phuc danh sach goc? ");
             System.out.println("An 1 de tiep tuc hoac bat ki nut nao khac de dung thao tac nay");
@@ -132,7 +128,7 @@ public class DictionaryFeature {
             String _character = br.readLine();
             if ("1".equals(_character)) {
                 slangs.clear();
-                slangs = FileHandler.importDataFromFile(path);
+                slangs = FileHandler.importDataFromFile(rootPathSlangs,"");
                 FileHandler.exportDataToFile(pathForWriting, slangs);
                 System.out.println("Khoi phuc danh sach goc thanh cong.");
 //                System.out.println("Size internal: "+slangs.size());

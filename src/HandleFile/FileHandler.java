@@ -4,11 +4,17 @@ import java.io.*;
 import java.util.*;
 
 public class FileHandler {
-    public static HashMap<String, String> importDataFromFile(String path) {
+    public static HashMap<String, String> importDataFromFile(String rootPath,String latestSlangsPath) {
         HashMap<String, String> slangs = new HashMap<>();
         List<String> lines = new ArrayList<>();
         try {
-            BufferedReader bf = new BufferedReader(new FileReader(path));
+            BufferedReader bf =null;
+            try{
+                bf=new BufferedReader(new FileReader(latestSlangsPath));
+            }
+            catch (IOException ioe){
+                bf= new BufferedReader(new FileReader(rootPath));
+            }
             String line0 = bf.readLine();
             String line;
             ArrayList<String> errors = new ArrayList<>(0);//check errors
@@ -66,7 +72,6 @@ public class FileHandler {
             }
             br.close();
         } catch (IOException e) {
-            System.out.println(e.toString());
         }
         return slangsFound;
     }

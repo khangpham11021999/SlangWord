@@ -56,11 +56,11 @@ class Menu {
 //
 public class Main {
     public static void main(String[] args) {
-        String backupPath = ".\\src\\Data\\backup.txt";
-        String pathForReadingAndWriting = ".\\src\\Data\\slang.txt";
+        String rootPath = ".\\src\\Data\\slang.txt";
         String pathForLog = ".\\src\\Data\\log.txt";
+        String latestSlangsPath=".\\src\\Data\\latestSlang.txt";
         try {
-            HashMap<String, String> slangs = FileHandler.importDataFromFile(pathForReadingAndWriting);
+            HashMap<String, String> slangs = FileHandler.importDataFromFile(rootPath,latestSlangsPath);
 //            System.out.println("Nums of data: "+slangs.size());
             boolean isContinue = true;
             while (isContinue) {
@@ -80,19 +80,19 @@ public class Main {
                         isContinue = Menu.isContinue();
                         break;
                     case 4://Them slang word
-                        slangs = DictionaryFeature.ThemSlangWord(pathForReadingAndWriting, slangs);
+                        slangs = DictionaryFeature.ThemSlangWord(latestSlangsPath, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 5://Chinh sua slang word
-                        slangs = DictionaryFeature.ChinhSuaSlangWord(pathForReadingAndWriting, slangs);
+                        slangs = DictionaryFeature.ChinhSuaSlangWord(latestSlangsPath, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 6://Xoa slang word
-                        slangs = DictionaryFeature.XoaSlangWord(pathForReadingAndWriting, slangs);
+                        slangs = DictionaryFeature.XoaSlangWord(latestSlangsPath, slangs);
                         isContinue = Menu.isContinue();
                         break;
                     case 7://backup: confirm? and only root data is keeping
-                        slangs = DictionaryFeature.KhoiPhucDanhSachGoc(backupPath, slangs, pathForReadingAndWriting);
+                        slangs = DictionaryFeature.KhoiPhucDanhSachGoc(rootPath, slangs, latestSlangsPath);
 //                        System.out.println("Size external: "+slangs.size());
                         isContinue = Menu.isContinue();
                         break;
